@@ -99,11 +99,11 @@ export default function GalleryPage() {
                 onClick={() => openImage(i)}
                 className="group block relative overflow-hidden rounded-lg"
                 style={{ transitionDelay: `${i * 0.02}s` }}
-                aria-label={`Open ${item.name}`}
+                aria-label={`Buka gambar ${i + 1}`}
               >
                 <img
                   src={item.src}
-                  alt={item.name}
+                  alt={`Gambar ${i + 1}`}
                   className="w-full h-56 object-cover"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
@@ -151,9 +151,7 @@ export default function GalleryPage() {
               alt={images[activeIndex].name}
               className="w-full h-auto max-h-[80vh] object-contain rounded shadow-lg transition-transform duration-200"
             />
-            <div className="mt-3 text-center text-white">
-              {images[activeIndex].name}
-            </div>
+            {/* caption removed per user request */}
 
             {/* thumbnails */}
             <div className="mt-4 flex gap-2 items-center overflow-x-auto pt-2">
@@ -163,11 +161,11 @@ export default function GalleryPage() {
                   onClick={() => setActiveIndex(idx)}
                   className={`rounded overflow-hidden border-2 ${idx === activeIndex ? "border-white" : "border-transparent"} shrink-0`}
                   style={{ width: 80, height: 56 }}
-                  aria-label={`View ${it.name}`}
+                  aria-label={`Lihat gambar ${idx + 1}`}
                 >
                   <img
                     src={it.src}
-                    alt={it.name}
+                    alt={`Gambar ${idx + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </button>

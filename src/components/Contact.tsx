@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent } from "react";
 import {
   MapPin,
   Phone,
@@ -7,44 +7,69 @@ import {
   Send,
   CheckCircle2,
   Building2,
-} from 'lucide-react';
+} from "lucide-react";
 
 const contactInfo = [
   {
     icon: MapPin,
-    label: 'Alamat',
+    label: "Alamat",
     value:
-      'Jalan Raya Citapen Nomor 24, Desa Citapen, Kecamatan Cihampelas, Kabupaten Bandung Barat, Jawa Barat',
+      "Jalan Raya Citapen Nomor 24, Desa Citapen, Kecamatan Cihampelas, Kabupaten Bandung Barat, Jawa Barat",
   },
   {
     icon: Phone,
-    label: 'Telepon / WhatsApp',
-    value: '+62-817-1724-8525',
-    href: 'https://wa.me/6281717248525',
+    label: "Telepon / WhatsApp",
+    value: "+62-817-1724-8525",
+    href: "https://wa.me/6281717248525",
   },
   {
     icon: Mail,
-    label: 'Email',
-    value: 'cahayatarumabadi@gmail.com',
-    href: 'mailto:cahayatarumabadi@gmail.com',
+    label: "Email",
+    value: "cahayatarumabadi@gmail.com",
+    href: "mailto:cahayatarumabadi@gmail.com",
   },
   {
     icon: Clock,
-    label: 'Jam Operasional',
-    value: 'Senin - Sabtu: 08.00 - 17.00 WIB',
+    label: "Jam Operasional",
+    value: "Senin - Sabtu: 08.00 - 17.00 WIB",
   },
 ];
 
 const bankAccounts = [
-  { bank: 'Bank BRI', account: '0123-4567-8901-23', name: 'KPMP CTA' },
-  { bank: 'Bank BNI', account: '0987-6543-2109-87', name: 'KPMP CTA' },
+  { bank: "Bank BRI", account: "0123-4567-8901-23", name: "KPMP CTA" },
+  { bank: "Bank BNI", account: "0987-6543-2109-87", name: "KPMP CTA" },
 ];
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [subjectInput, setSubjectInput] = useState("");
+  const [messageInput, setMessageInput] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    // prepare WhatsApp message
+    const waNumber = "6281717248525";
+    const lines = [
+      "Halo KPMP CTA,",
+      "",
+      `Nama: ${name}`,
+      `Telepon: ${phoneInput}`,
+      `Email: ${emailInput}`,
+      `Subjek: ${subjectInput}`,
+      "",
+      "Pesan:",
+      messageInput,
+    ];
+    const text = lines.join("\n");
+    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+
+    // open WhatsApp (new tab)
+    window.open(url, "_blank");
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
   };
@@ -56,9 +81,7 @@ export default function Contact() {
           <span className="inline-block px-4 py-1.5 bg-primary-50 text-primary-600 text-sm font-semibold rounded-full mb-4">
             Kontak
           </span>
-          <h2 className="section-title mb-4">
-            Hubungi Kami
-          </h2>
+          <h2 className="section-title mb-4">Hubungi Kami</h2>
           <p className="section-subtitle mx-auto">
             Kami siap mendengar dan membantu Anda. Jangan ragu untuk menghubungi
             KPMP CTA.
@@ -80,8 +103,14 @@ export default function Contact() {
                   {info.href ? (
                     <a
                       href={info.href}
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={
+                        info.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        info.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="text-gray-700 hover:text-primary-600 transition-colors font-medium text-sm"
                     >
                       {info.value}
@@ -99,16 +128,25 @@ export default function Contact() {
             <div className="mt-8 p-6 bg-gray-50 rounded-2xl border border-gray-100">
               <div className="flex items-center gap-2 mb-4">
                 <Building2 className="w-5 h-5 text-primary-500" />
-                <h4 className="font-semibold text-gray-800">Rekening Koperasi</h4>
+                <h4 className="font-semibold text-gray-800">
+                  Rekening Koperasi
+                </h4>
               </div>
               <div className="space-y-4">
                 {bankAccounts.map((acc) => (
-                  <div key={acc.bank} className="p-3 bg-white rounded-xl border border-gray-100">
-                    <p className="text-xs text-gray-400 font-medium">{acc.bank}</p>
+                  <div
+                    key={acc.bank}
+                    className="p-3 bg-white rounded-xl border border-gray-100"
+                  >
+                    <p className="text-xs text-gray-400 font-medium">
+                      {acc.bank}
+                    </p>
                     <p className="text-sm font-mono font-semibold text-gray-700 mt-1">
                       {acc.account}
                     </p>
-                    <p className="text-xs text-gray-500 mt-0.5">a.n. {acc.name}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      a.n. {acc.name}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -131,7 +169,8 @@ export default function Contact() {
                     Pesan Terkirim!
                   </h4>
                   <p className="text-sm text-gray-500">
-                    Terima kasih telah menghubungi kami. Kami akan segera merespons.
+                    Terima kasih telah menghubungi kami. Kami akan segera
+                    merespons.
                   </p>
                 </div>
               ) : (
@@ -144,6 +183,8 @@ export default function Contact() {
                       <input
                         type="text"
                         required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                         placeholder="Masukkan nama Anda"
                       />
@@ -154,6 +195,8 @@ export default function Contact() {
                       </label>
                       <input
                         type="tel"
+                        value={phoneInput}
+                        onChange={(e) => setPhoneInput(e.target.value)}
                         className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                         placeholder="08xx-xxxx-xxxx"
                       />
@@ -166,6 +209,8 @@ export default function Contact() {
                     <input
                       type="email"
                       required
+                      value={emailInput}
+                      onChange={(e) => setEmailInput(e.target.value)}
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                       placeholder="email@contoh.com"
                     />
@@ -174,13 +219,21 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-gray-600 mb-1.5">
                       Subjek
                     </label>
-                    <select className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all">
+                    <select
+                      value={subjectInput}
+                      onChange={(e) => setSubjectInput(e.target.value)}
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                    >
                       <option value="">Pilih subjek</option>
-                      <option value="info">Informasi Umum</option>
-                      <option value="produk">Produk Zeger AG-91</option>
-                      <option value="keanggotaan">Keanggotaan Koperasi</option>
-                      <option value="kerjasama">Kerja Sama</option>
-                      <option value="lainnya">Lainnya</option>
+                      <option value="Informasi Umum">Informasi Umum</option>
+                      <option value="Produk Zeger AG-91">
+                        Produk Zeger AG-91
+                      </option>
+                      <option value="Keanggotaan Koperasi">
+                        Keanggotaan Koperasi
+                      </option>
+                      <option value="Kerja Sama">Kerja Sama</option>
+                      <option value="Lainnya">Lainnya</option>
                     </select>
                   </div>
                   <div>
@@ -190,13 +243,18 @@ export default function Contact() {
                     <textarea
                       required
                       rows={4}
+                      value={messageInput}
+                      onChange={(e) => setMessageInput(e.target.value)}
                       className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none"
                       placeholder="Tulis pesan Anda di sini..."
                     />
                   </div>
-                  <button type="submit" className="btn-primary w-full sm:w-auto">
+                  <button
+                    type="submit"
+                    className="btn-primary w-full sm:w-auto"
+                  >
                     <Send className="w-4 h-4 mr-2" />
-                    Kirim Pesan
+                    Kirim Pesan via WhatsApp
                   </button>
                 </form>
               )}
