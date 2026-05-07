@@ -1,18 +1,20 @@
 // React runtime is automatic; import hooks only when needed
 import {
   BookOpen,
-  Shield,
   Star,
-  Bird,
-  Wheat,
-  Award,
   FileCheck,
   Users,
   Target,
   GraduationCap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import dragonImg from "../assets/dragon.jpg";
+import dragonImg from "../assets/icon/1.png";
+import tigerImg from "../assets/icon/2.png";
+import rajawaliImg from "../assets/icon/3.png";
+import wheatImg from "../assets/icon/4.png";
+import starImg from "../assets/icon/5.png";
+import strukturImg from "../assets/struktur.png";
+import strukturCabangImg from "../assets/struktur-cabang.png";
 
 type LogoElement = {
   icon?: LucideIcon;
@@ -25,32 +27,32 @@ type LogoElement = {
 
 const logoElements: LogoElement[] = [
   {
-    icon: Star,
     name: "Bintang",
+    image: starImg,
     meaning:
       "Simbol keagungan dan kemuliaan, mencerminkan cita-cita luhur koperasi menuju kedaulatan pangan dan ekonomi rakyat.",
     color: "text-accent-gold-400",
     bg: "bg-accent-gold-400/10",
   },
   {
-    icon: Bird,
     name: "Rajawali",
+    image: rajawaliImg,
     meaning:
       "Lambang kewaspadaan, ketangguhan, dan jangkauan visi yang luas. Rajawali terbang tinggi namun tetap fokus pada sasaran.",
     color: "text-primary-500",
     bg: "bg-primary-500/10",
   },
   {
-    icon: Wheat,
     name: "Padi & Kapas",
+    image: wheatImg,
     meaning:
       "Padi melambangkan ketahanan pangan dan kemakmuran, sedangkan kapas melambangkan kesejahteraan sandang — dua pilar kebutuhan dasar rakyat.",
     color: "text-accent-gold-500",
     bg: "bg-accent-gold-500/10",
   },
   {
-    icon: Shield,
     name: "Macan",
+    image: tigerImg,
     meaning:
       "Simbol keberanian dan kekuatan, merepresentasikan semangat juang dalam memperjuangkan kedaulatan ekonomi kerakyatan.",
     color: "text-amber-600",
@@ -64,14 +66,14 @@ const logoElements: LogoElement[] = [
     color: "text-emerald-600",
     bg: "bg-emerald-600/10",
   },
-  {
-    icon: Award,
-    name: "Kujang Kembar",
-    meaning:
-      "Senjata tradisional Sunda yang melambangkan ketajaman pikiran dan keteguhan hati. Kujang kembar menyimbolkan keseimbangan antara dunia dan akhirat, serta antara kebijaksanaan dan kekuatan.",
-    color: "text-primary-600",
-    bg: "bg-primary-600/10",
-  },
+  // {
+  //   image: awardImg,
+  //   name: "Kujang Kembar",
+  //   meaning:
+  //     "Senjata tradisional Sunda yang melambangkan ketajaman pikiran dan keteguhan hati. Kujang kembar menyimbolkan keseimbangan antara dunia dan akhirat, serta antara kebijaksanaan dan kekuatan.",
+  //   color: "text-primary-600",
+  //   bg: "bg-primary-600/10",
+  // },
 ];
 
 const identityItems = [
@@ -194,50 +196,79 @@ export default function About(): JSX.Element {
         </div>
 
         {/* Makna Logo */}
-        <div className="mb-20">
-          <div className="text-center mb-12 animate-on-scroll">
-            <h3 className="font-display text-3xl font-bold text-primary-700 mb-3">
-              Makna Logo
-            </h3>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Setiap elemen dalam logo KPMP CTA mengandung makna filosofis yang
-              mendalam, mencerminkan nilai-nilai luhur bangsa Indonesia.
-            </p>
-          </div>
+        <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+          <div className="container mx-auto px-4">
+            {/* Header */}
+            <div className="text-center mb-16 animate-on-scroll">
+              <span className="inline-block px-4 py-1.5 bg-primary-100 text-primary-700 text-sm font-medium rounded-full mb-4">
+                Filosofi Logo
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Makna di Balik{" "}
+                <span className="text-primary-600">Setiap Elemen</span>
+              </h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+                Setiap elemen dalam logo KPMP CTA mengandung makna filosofis
+                yang mendalam, mencerminkan nilai-nilai luhur bangsa Indonesia.
+              </p>
+            </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {logoElements.map((el, i) => (
-              <div
-                key={el.name}
-                className="animate-on-scroll card p-6"
-                style={{ transitionDelay: `${i * 0.1}s` }}
-              >
+            {/* Logo Elements Grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {logoElements.map((el, i) => (
                 <div
-                  className={`w-12 h-12 rounded-xl ${el.bg} flex items-center justify-center mb-4`}
+                  key={el.name}
+                  className="group animate-on-scroll"
+                  style={{ animationDelay: `${i * 100}ms` }}
                 >
-                  {el.image ? (
-                    <img
-                      src={el.image}
-                      alt={el.name}
-                      className="w-6 h-6 object-contain"
+                  <div className="relative h-full bg-white rounded-2xl p-8 shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-xl hover:border-primary-200 hover:-translate-y-1">
+                    {/* Decorative gradient blob */}
+                    <div
+                      className={`absolute top-0 right-0 w-32 h-32 ${el.bg} opacity-30 rounded-full blur-3xl -z-10 transition-opacity group-hover:opacity-50`}
                     />
-                  ) : (
-                    (() => {
-                      const Icon = el.icon;
-                      return Icon ? (
-                        <Icon className={`w-6 h-6 ${el.color}`} />
-                      ) : null;
-                    })()
-                  )}
+                    {/* Icon container with 3D effect */}
+                    <div
+                      className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${el.bg} mb-6
+    transition-transform duration-500
+    transform-gpu
+    group-hover:rotate-x-6 group-hover:rotate-y-6 group-hover:scale-110 
+    shadow-[0_10px_25px_rgba(0,0,0,0.15)] group-hover:shadow-[0_20px_35px_rgba(0,0,0,0.25)]
+  `}
+                      style={{
+                        perspective: "800px",
+                      }}
+                    >
+                      {el.image ? (
+                        <img
+                          src={el.image}
+                          alt=""
+                          className="w-full h-full object-cover drop-shadow-[0_4px_8px_rgba(0,0,0,0.2)]"
+                        />
+                      ) : el.icon ? (
+                        <el.icon
+                          className={`w-12 h-12 ${el.color} drop-shadow-[0_4px_8px_rgba(0,0,0,0.2)]`}
+                        />
+                      ) : null}
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="font-display text-xl font-semibold text-gray-900 mb-3">
+                      {el.name}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {el.meaning}
+                    </p>
+
+                    {/* Bottom accent line */}
+                    <div
+                      className={`absolute bottom-0 left-8 right-8 h-1 ${el.bg} rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                    />
+                  </div>
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">{el.name}</h4>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {el.meaning}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Jati Diri */}
         <div>
@@ -318,8 +349,18 @@ export default function About(): JSX.Element {
           </div>
           <div className="flex justify-center">
             <img
-              src="/images/struktur.png"
+              src={strukturImg}
               alt="Struktur Organisasi KPMP CTA Pusat"
+              className="w-full h-auto object-contain rounded shadow-lg border border-gray-100"
+            />
+          </div>
+        </div>
+        {/* Struktur cabang Organisasi */}
+        <div className="mt-16 animate-on-scroll" id="struktur-cabang">
+          <div className="flex justify-center">
+            <img
+              src={strukturCabangImg}
+              alt="Struktur Organisasi KPMP CTA Cabang"
               className="w-full h-auto object-contain rounded shadow-lg border border-gray-100"
             />
           </div>

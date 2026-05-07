@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 
 type Branch = {
   id: string;

@@ -36,8 +36,8 @@ const contactInfo = [
 ];
 
 const bankAccounts = [
-  { bank: "Bank BRI", account: "0123-4567-8901-23", name: "KPMP CTA" },
-  { bank: "Bank BNI", account: "0987-6543-2109-87", name: "KPMP CTA" },
+  { bank: "Bank BRI", account: "0354-0122-1222-305", name: "KPMP CTA" },
+  { bank: "Bank MANDIRI", account: "1310-0251-74063", name: "KPMP CTA" },
 ];
 
 export default function Contact() {

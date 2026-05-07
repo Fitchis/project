@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.jpeg";
+import logo from "../assets/logo.png";
 
 const navLinks = [
   { label: "Beranda", href: "#beranda" },
@@ -50,15 +50,13 @@ export default function Navbar() {
           <a href="#beranda" className="flex items-center gap-2 group">
             <div
               className={`w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden transition-all duration-300 ${
-                scrolled
-                  ? "bg-primary-500 shadow-md"
-                  : "bg-white/20 backdrop-blur-sm"
+                scrolled ? "bg-transparent" : "bg-transparent"
               }`}
             >
               <img
                 src={logo}
                 alt="KPMP CTA"
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-xl object-cover"
               />
             </div>
             <div className="flex flex-col">

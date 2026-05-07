@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import logoBg from "../assets/logo.jpeg";
+import logoBg from "../assets/logo.png";
 
 type ImageItem = { src: string; name: string };
 
@@ -64,7 +64,7 @@ export default function GalleryPage() {
 
   return (
     <div
-      className="bg-fixed bg-center bg-cover"
+      className="bg-fixed bg-center bg-cover "
       style={{ backgroundImage: `url(${logoBg})` }}
     >
       <section className="relative min-h-56 flex items-center">
