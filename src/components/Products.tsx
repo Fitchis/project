@@ -1,38 +1,45 @@
-import { Droplets, FlaskConical, Sprout, Leaf, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+  Droplets,
+  FlaskConical,
+  Sprout,
+  Leaf,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
 
 const zegerBenefits = [
-  'Menyuburkan tanaman secara alami dan berkelanjutan',
-  'Memulihkan kondisi lahan kritis dan degraded',
-  'Meningkatkan hasil panen secara signifikan',
-  'Ramah lingkungan dan aman untuk kesehatan',
-  'Mengaktifkan mikroorganisme menguntungkan di tanah',
-  'Mengurangi ketergantungan pada pupuk kimia',
+  "Menyuburkan tanaman secara alami dan berkelanjutan",
+  "Memulihkan kondisi lahan kritis dan degraded",
+  "Meningkatkan hasil panen secara signifikan",
+  "Ramah lingkungan dan aman untuk kesehatan",
+  "Mengaktifkan mikroorganisme menguntungkan di tanah",
+  "Mengurangi ketergantungan pada pupuk kimia",
 ];
 
 const otherProducts = [
   {
     icon: Sprout,
-    title: 'Bank Benih Purba',
+    title: "Bank Benih Purba",
     description:
-      'Koleksi dan pelestarian benih-benih purba nusantara yang memiliki ketahanan alami tinggi. Bank Benih Purba menjaga warisan genetik pertanian Indonesia untuk generasi mendatang.',
-    color: 'text-amber-600',
-    bg: 'bg-amber-600/10',
+      "Koleksi dan pelestarian benih-benih purba nusantara yang memiliki ketahanan alami tinggi. Bank Benih Purba menjaga warisan genetik pertanian Indonesia untuk generasi mendatang.",
+    color: "text-amber-600",
+    bg: "bg-amber-600/10",
   },
   {
     icon: Leaf,
-    title: 'Produk Pertanian Organik',
+    title: "Produk Pertanian Organik",
     description:
-      'Rangkaian lengkap produk pertanian organik berkualitas tinggi, mulai dari bibit unggul, pupuk organik, hingga pestisida nabati yang teruji efektif.',
-    color: 'text-accent-green-500',
-    bg: 'bg-accent-green-500/10',
+      "Rangkaian lengkap produk pertanian organik berkualitas tinggi, mulai dari bibit unggul, pupuk organik, hingga pestisida nabati yang teruji efektif.",
+    color: "text-accent-green-500",
+    bg: "bg-accent-green-500/10",
   },
   {
     icon: ArrowRight,
-    title: 'Hilirisasi',
+    title: "Hilirisasi",
     description:
-      'Pengolahan dan distribusi hasil pertanian dari hulu ke hilir, memastikan petani mendapatkan nilai tambah optimal dari setiap produk yang dihasilkan.',
-    color: 'text-primary-500',
-    bg: 'bg-primary-500/10',
+      "Pengolahan dan distribusi hasil pertanian dari hulu ke hilir, memastikan petani mendapatkan nilai tambah optimal dari setiap produk yang dihasilkan.",
+    color: "text-primary-500",
+    bg: "bg-primary-500/10",
   },
 ];
 
@@ -44,9 +51,7 @@ export default function Products() {
           <span className="inline-block px-4 py-1.5 bg-accent-gold-400/10 text-accent-gold-500 text-sm font-semibold rounded-full mb-4">
             Produk & Teknologi
           </span>
-          <h2 className="section-title mb-4">
-            Inovasi untuk Kemakmuran
-          </h2>
+          <h2 className="section-title mb-4">Inovasi untuk Kemakmuran</h2>
           <p className="section-subtitle mx-auto">
             Teknologi dan produk unggulan KPMP CTA yang telah terbukti membawa
             manfaat nyata bagi petani Indonesia.
